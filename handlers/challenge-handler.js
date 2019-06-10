@@ -11,10 +11,10 @@ module.exports = {
   },
   handle(handlerInput) {
     // const speechText = 'What kind of challenge are you looking for?';
-    const dataType = handlerInput.requestEnvelope.request.intent.slots.dataType.value;
+    const dataType = handlerInput.requestEnvelope.request.intent.slots.dataType.id;
     // const speechText =
     //   handlerInput.requestEnvelope.request.intent.slots.dataType.value;
-    const url = `https://oh-of-one.herokuapp.com/${dataType}`;
+    const url = `https://oh-of-one.herokuapp.com/${dataType}/anyDifficulty`;
     superagent.get(url).then(response => {
       const speechText = response.body[0].question;
         return handlerInput.responseBuilder

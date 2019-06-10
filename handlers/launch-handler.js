@@ -9,7 +9,7 @@ module.exports = {
   handle(handlerInput) {
     const url = `https://oh-of-one.herokuapp.com/`;
     superagent.get(url);
-    const speechText = "Welcome to Whiteboard Code Challenges.";
+    const speechText = "Welcome to Whiteboard Code Challenges. What type of question would you like?";
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
