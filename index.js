@@ -48,7 +48,7 @@ const CancelAndStopIntentHandler = {
       (handlerInput.requestEnvelope.request.intent.name ===
         'AMAZON.CancelIntent' ||
         handlerInput.requestEnvelope.request.intent.name ===
-          'AMAZON.StopIntent')
+        'AMAZON.StopIntent')
     );
   },
   handle(handlerInput) {
