@@ -32,7 +32,7 @@ exports.handler = Alexa.SkillBuilders.custom()
   .addRequestHandlers(
     LaunchRequestHandler,
     ChallengeIntentHandler,
-    // HintIntentHandler,
+    HintIntentHandler,
     SolutionIntentHandler,
   )
   .addErrorHandlers(ErrorHandler)

@@ -20,7 +20,7 @@ module.exports = {
         .difficulty.resolutions ?
         handlerInput.requestEnvelope.request.intent.slots.difficulty
           .resolutions.resolutionsPerAuthority[0].values[0].value.id :
-        'anyDifficulty';
+        'anydifficulty';
 
     const userID = handlerInput.requestEnvelope.session.user.userId;
     const url = `https://oh-of-one.herokuapp.com/question/${dataType}/${difficulty}/${userID}`;
