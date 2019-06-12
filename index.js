@@ -4,8 +4,8 @@ const Alexa = require('ask-sdk-core');
 
 const LaunchRequestHandler = require('./handlers/launch-handler.js');
 const ChallengeIntentHandler = require('./handlers/challenge-handler.js');
-// const HintIntentHandler = require('./handlers/hint-handler.js');
-// const SolutionIntentHandler = require('./handlers/solution-handler.js');
+const HintIntentHandler = require('./handlers/hint-handler.js');
+const SolutionIntentHandler = require('./handlers/solution-handler.js');
 
 // Generic error handling to capture any syntax or routing errors. If you receive an error
 // stating the request handler chain is not found, you have not implemented a handler for
@@ -33,7 +33,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     LaunchRequestHandler,
     ChallengeIntentHandler,
     // HintIntentHandler,
-    // SolutionIntentHandler,
+    SolutionIntentHandler,
   )
   .addErrorHandlers(ErrorHandler)
   .lambda();

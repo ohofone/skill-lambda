@@ -9,12 +9,10 @@ module.exports = {
   handle(handlerInput) {
     const url = `https://oh-of-one.herokuapp.com/`;
     superagent.get(url);
-    const speechText = 'Welcome to Whiteboard Code Challenges. What would you like to practice? You can ask about arrays, linked lists, or strings.';
+    const speechText = 'Welcome to O of One interview prep. What would you like to practice? You can ask about arrays, linked lists, or strings.';
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt('You can ask about arrays, linked lists, strings.') //or trivia... :)
       .getResponse();
   }
 };
-
-// ask for type and difficulty

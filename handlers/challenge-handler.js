@@ -32,7 +32,8 @@ module.exports = {
         let speechText = '';
 
         if (response.body[0]) {
-          speechText = 'Here is your question. ' + response.body[0].question;
+          let data_type = (dataType === 'linkedlist' ? 'linked list' : dataType);
+          speechText = `Here is your ${data_type} code challenge. <prosody rate="85%">${response.body[0].question}</prosody>`;
         }
 
         return handlerInput.responseBuilder
