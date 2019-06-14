@@ -24,16 +24,19 @@ module.exports = {
         
         if (response.body && response.body[0]) {
 
-            let hintResponse = response.body[0].bigotime;
+            let hintResponse = 'The time complexity of the optimal solution is ' 
+                                + response.body[0].bigotime;
             
             if (hintExists) {
               let hintType = hintExists.resolutionsPerAuthority[0].values[0].value.id;
               hintResponse = response.body[0][hintType];
               if (hintType === 'question') {
                 speechText = `Here's the question again. ${hintResponse}.`;
+              } else {
+                speechText = `${hintResponse}.`;
               }
             } else {
-              speechText = `Ok, here is a hint. ${hintResponse}.`;
+              // speechText = `Ok, here is a hint. ${hintResponse}.`;
             }
         }
 
