@@ -25,6 +25,22 @@ const ErrorHandler = {
   },
 };
 
+const CancelAndStopIntentHandler = {
+  canHandle(handlerInput) {
+    return (
+      handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      (handlerInput.requestEnvelope.request.intent.name ===
+        'AMAZON.CancelIntent' ||
+        handlerInput.requestEnvelope.request.intent.name ===
+        'AMAZON.StopIntent')
+    );
+  },
+  handle(handlerInput) {
+    const speechText = 'Goodbye! Best of luck on your interview!';
+    return handlerInput.responseBuilder.speak(speechText).getResponse();
+  },
+};
+
 // This handler acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
 // defined are included below. The order matters - they're processed top to bottom.
@@ -34,6 +50,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     ChallengeIntentHandler,
     HintIntentHandler,
     SolutionIntentHandler,
+    CancelAndStopIntentHandler,
   )
   .addErrorHandlers(ErrorHandler)
   .lambda();
