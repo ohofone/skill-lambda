@@ -11,9 +11,9 @@ module.exports = {
   },
   handle(handlerInput) {
     // const speechText = 'What kind of challenge are you looking for?';
-    const dataType =
+    const dataType = handlerInput.requestEnvelope.request.intent.slots.dataType.resolutions ?
       handlerInput.requestEnvelope.request.intent.slots.dataType.resolutions
-        .resolutionsPerAuthority[0].values[0].value.id;
+        .resolutionsPerAuthority[0].values[0].value.id : 'anydatatype';
 
     const difficulty =
       handlerInput.requestEnvelope.request.intent.slots
@@ -33,11 +33,12 @@ module.exports = {
 
         if (response.body[0]) {
           let data_type = (dataType === 'linkedlist' ? 'linked list' : dataType);
-          speechText = `Here is your ${data_type} code challenge. <prosody rate="85%">${response.body[0].question}</prosody>`;
+          speechText = `Here is your code challenge. <prosody rate="85%">${response.body[0].question}</prosody>`;
         }
 
         return handlerInput.responseBuilder
           .speak(speechText)
+          .reprompt('')
           .getResponse();
       })
       .catch(console.error);
